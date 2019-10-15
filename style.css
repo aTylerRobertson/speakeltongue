@@ -16,6 +16,11 @@ input {
   resize: vertical;
 }
 
+#out {
+  min-height: 100px;
+  resize: vertical;
+}
+
 textarea:focus,
 input:focus {
   outline: 0;

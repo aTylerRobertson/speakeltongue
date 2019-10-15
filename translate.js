@@ -6,6 +6,10 @@ $('#speak').click(() => {
   translate(input.value, extraInput.value);
 });
 
+$('#share').click(() => {
+  shareLink(input.value, extraInput.value);
+});
+
 $('#in').keydown((e) => {
     if (e.keyCode == 9) {  // tab
         e.preventDefault();
@@ -128,8 +132,18 @@ const translate = (input, extra) => {
   }
 }
 
-const shareLink = (food, input) => {
-  
+const shareLink = (input, food) => {
+  var food = food.replace(/\s/g,'+');
+  var input = input.replace(/\s/g,'+');
+
+  const copyLink = document.createElement('textarea');
+  copyLink.value = `https://compysando.github.io/speakeltongue/?food=${food}&input=${input}`;
+  document.body.appendChild(copyLink);
+  copyLink.select();
+  document.execCommand('copy');
+  document.body.removeChild(copyLink);
+
+  $('#share').text('copied URL to clipboard!');
 }
 
 const loadExample = (example) => {
@@ -146,3 +160,11 @@ const loadExample = (example) => {
     $('#in').val('SSSSSSSS shake zig SSSS shake zig SS zig SSS zig SSS zig S zaaaag s rattle zig S zig S zig s ziig S shake zag rattle zag s rattle ziig HISS zig sss HISS SSSSSSS HISSS SSS HISS ziig hiss zag s hiss zag hiss SSS hiss ssssss hiss ssssssss hiss ziig hiss ziig S HISS zig SS HISS');
   }
 }
+
+$(document).ready(() => {
+  const url = window.location.href;
+  const food = url.match(/food=(.+)&input/)[1].replace(/\+/g,' ');
+  const input = url.match(/&input=(.+)/)[1].replace(/\+/g,' ');
+  $('#food').val(food);
+  $('#in').val(input);
+});
