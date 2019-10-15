@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Speakeltongue</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row my-4 py-4 border-bottom">
+        <h1 class="display-1 mb-0">Speakeltongue</h1>
+        <p class="lead">"Well sure, Harry Potter can speak parseltongue. But can he parse Speakeltongue?"</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Imagine an infinitely long snake.</h2>
+          <p>
+            Now imagine that you can point to any scale on that snake, and assign a number to it. The snake is totally up for this exercise, but you have to talk to the snake in a way it can understand. That's Speakeltongue!
+          </p>
+          <p>
+           Use commands to point to scales up and down the snake's body, and add/subtract to the number assigned to the scale you're pointing at. You can also feed the snake, loop through commands, and have them return the output in a way that's... you know, it's probably better that we leave output up to the imagination.
+          </p>
+          <h2>Commands</h2>
+          <div class="container">
+            <div class="row mb-2 p-2">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">S</div>
+              <div class="col-10">Add 1 to scale</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">s</div>
+              <div class="col-10">Subtract 1 from scale</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">zig</div>
+              <div class="col-10">Point 1 scale down the snake (add more i's to go further)</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">zag</div>
+              <div class="col-10">Point 1 scale further up the snake (add more a's to go further) (can't go past the head)</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">hiss</div>
+              <div class="col-10">Output the current scale's number as a <a href="https://en.wikipedia.org/wiki/UTF-16">UTF-16 character</a> (A = 65)</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">gulp</div>
+              <div class="col-10">'Eat' the first character in 'food', create a new scale with its UTF-16 number</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">chew</div>
+              <div class="col-10">Move down the snake to the next empty scale</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">munch</div>
+              <div class="col-10">Same as "chew", but write down the number of scales you skipped</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">shake</div>
+              <div class="col-10">Start a loop, unless the current scale is equal to 0</div>
+            </div>
+            <div class="row mb-2 p-2 border-top">
+              <div class="col-2 align-middle text-info text-right font-weight-bold">rattle</div>
+              <div class="col-10">Return to the start of the loop, unless the current scale is equal to 0</div>
+            </div>
+          </div>
+          <div class="alert alert-info" role="alert">
+            All commands can be elongated, which sometimes changes their effect! For example, <code>SSSSS</code> adds 5 to the current scale, <code>guuuuulp</code> eats 5 characters of food, and <code>HISSSSSSSSSS</code> outputs the current scale's value 9 times.
+          </div>
+          <p>
+          <h2>More Information</h2>
+          <p>
+            This is a mostly useless programming language written by <a href="https://sandwich.computer">Tyler Robertson</a>, based on <a href="https://esolangs.org/wiki/Brainfuck">brainfuck</a>.
+          </p>
+
+        </div>
+
+        <div class="col-sm-6">
+          <input type="text" id="food" placeholder="Food"></input>
+
+          <textarea id="in" placeholder="Speakeltongue"></textarea>
+
+          <button type="button" class="btn btn-success btn-lg btn-block font-italic text-monospace" id="speak">GO!</button>
+
+          <textarea id="out" placeholder="Program output"></textarea>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <p class="lead text-center mt-4 pt-4 mb-1 border-top">Examples:</p>
+              </div>
+            </div>
+            <div class="row">
+                <div class="btn-group btn-group-lg mx-auto" role="group">
+                  <button type="button" class="btn btn-info" onclick="loadExample('hello')" href="#">Hello, World!</button>
+                  <button type="button" class="btn btn-info" onclick="loadExample('backwards')" href="#">... but backwards</button>
+                  <button type="button" class="btn btn-info" onclick="loadExample('no-input')" href="#">... but starving</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="translate.js"></script>
+
+  </body>
+</html>

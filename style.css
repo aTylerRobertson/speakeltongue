@@ -1,0 +1,22 @@
+textarea,
+input {
+  margin: 10px auto;
+  border: 0;
+  padding: 8px 16px;
+  width: 100%;
+  background: #222;
+  color: #78e08f;
+  font-family: monospace;
+  font-size: 1.25em;
+  border-radius: 5px;
+}
+
+#in {
+  min-height: 200px;
+  resize: vertical;
+}
+
+textarea:focus,
+input:focus {
+  outline: 0;
+}
