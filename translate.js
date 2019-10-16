@@ -62,7 +62,7 @@ const translate = (input, extra) => {
         for (var i = 3; i < command.length; i++) {
           if (food[0]) { // longer guuuuuuulp inserts next character from input (once per u)
             snake.splice(scale, 0, food.shift().charCodeAt(0));
-            $('#food').val(food.join());
+            $('#food').val(food.join(''));
             console.log(`Swallowed input ${snake[scale]} into scale ${scale}`);
           }
         }
